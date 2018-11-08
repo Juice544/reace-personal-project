@@ -50,8 +50,8 @@ export const api = {
         });
     },
 
-    completeAllTasks (tasksList) {
-        tasksList.map((taskProps) => {
+    async completeAllTasks (tasksList) {
+        const tasksFetch = tasksList.map((taskProps) => {
             return fetch(`${MAIN_URL}`, {
                 method:  'PUT',
                 headers: {
@@ -62,5 +62,15 @@ export const api = {
             });
         });
 
+        await Promise.all(tasksFetch).then(
+            (resolve) => {
+                resolve.forEach((response) => {
+                    if (response.status !== 200) {
+                        throw new Error('Task were not updated');
+                    }
+                });
+            },
+            (error) => `Tasks were not updated ${error.message}`
+        );
     },
 };

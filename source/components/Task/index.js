@@ -37,6 +37,8 @@ export default class Task extends PureComponent {
 
         if (isTaskEditing) {
             this._updateTask();
+
+            return null;
         }
         this._setTaskEditingState(true);
     };

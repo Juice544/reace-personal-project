@@ -7,7 +7,7 @@ import Spinner from '../';
 
 export const result = shallow(<Spinner />);
 
-describe('Компонент Spinner:', () => {
+describe('Компонент Sinner:', () => {
     test('должен отрендерить разметку, если значение пропса isSpinning — true', () => {
         result.setProps({
             isSpinning: true,

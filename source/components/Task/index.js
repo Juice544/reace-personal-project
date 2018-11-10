@@ -132,44 +132,53 @@ export default class Task extends PureComponent {
             <li className = { style }>
                 <div className = { Styles.content }>
                     <Checkbox
+                        inlineBlock
                         checked = { completed }
                         className = { Styles.toggleTaskCompletedState }
-                        color1 = 'blue'
-                        color2 = 'white'
+                        color1 = '#3B8EF3'
+                        color2 = '#FFF'
+                        height = { 25 }
+                        width = { 25 }
                         onClick = { this._toggleTaskCompletedState }
                     />
                     <input
                         disabled
                         maxLength = { 50 }
-                        value = { newMessage }
                         ref = { this.taskInput }
                         type = 'text'
+                        value = { newMessage }
                         onChange = { this._updateNewTaskMessage }
                         onKeyDown = { this._updateTaskMessageOnKeyDown }
                     />
                 </div>
                 <div className = { Styles.actions }>
                     <Star
+                        inlineBlock
                         checked = { favorite }
                         className = { Styles.toggleTaskFavoriteState }
-                        color1 = 'blue'
-                        color2 = 'gray'
-                        inlineBlock
+                        color1 = '#3B8EF3'
+                        color2 = '#000'
+                        height = { 19 }
+                        width = { 19 }
                         onClick = { this._toggleTaskFavoriteState }
                     />
                     <Edit
+                        inlineBlock
                         checked = { isTaskEditing }
                         className = { Styles.updateTaskMessageOnClick }
-                        color1 = 'blue'
-                        color2 = 'gray'
-                        inlineBlock
+                        color1 = '#3B8EF3'
+                        color2 = '#000'
+                        height = { 19 }
+                        width = { 19 }
                         onClick = { this._updateTaskMessageOnClick }
                     />
                     <Remove
-                        className = { Styles.removeTask }
-                        color1 = 'blue'
-                        color2 = 'gray'
                         inlineBlock
+                        className = { Styles.removeTask }
+                        color1 = '#3B8EF3'
+                        color2 = '#000'
+                        height = { 17 }
+                        width = { 17 }
                         onClick = { this._removeTask }
                     />
                 </div>

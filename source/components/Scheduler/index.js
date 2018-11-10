@@ -1,10 +1,14 @@
+// Core
 import React, { Component } from 'react';
+import FlipMove from 'react-flip-move';
 
+// Instruments
 import Styles from './styles.m.css';
 import Checkbox from '../../theme/assets/Checkbox';
 import { api } from '../../REST';
 import { sortTasksByGroup, sortTasksByDate } from '../../instruments/helpers';
 
+// Components
 import Spinner from '../../components/Spinner';
 import Task from '../../components/Task';
 
@@ -180,10 +184,10 @@ export default class Scheduler extends Component {
 
         return (
             <section className = { Styles.scheduler }>
+                <Spinner isSpinning = { isTasksFetching } />
                 <main>
-                    <Spinner isSpinning = { isTasksFetching } />
                     <header>
-                        <h1 className = { Styles.test }>Планировщик задач</h1>
+                        <h1>Планировщик задач</h1>
                         <input placeholder = 'Поиск' type = 'search' value = { this.state.tasksFilter } onChange = { this._updateTasksFilter } />
                     </header>
                     <section >
@@ -191,7 +195,7 @@ export default class Scheduler extends Component {
                             <input
                                 className = { Styles.createTask }
                                 maxLength = { 50 }
-                                placeholder = 'Описание моей новой задачи'
+                                placeholder = 'Описaние моей новой задачи'
                                 type = 'text'
                                 value = { newTaskMessage }
                                 onChange = { this._updateNewTaskMessage }
@@ -200,17 +204,19 @@ export default class Scheduler extends Component {
                                 Добавить задачу
                             </button>
                         </form>
-                        <div className = { Styles.overlay } >
+                        <div className = { Styles.overlay }>
                             <ul>
-                                { renderTask }
+                                <FlipMove duration = { 400 }>
+                                    {renderTask}
+                                </FlipMove>
                             </ul>
                         </div>
                     </section>
                     <footer>
                         <Checkbox
                             checked = { this._getAllCompleted() }
-                            color1 = 'blue'
-                            color2 = 'white'
+                            color1 = '#363636'
+                            color2 = '#fff'
                             height = { 25 }
                             width = { 25 }
                             onClick = { this._completeAllTasksAsync }
